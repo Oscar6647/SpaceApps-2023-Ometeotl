@@ -17,10 +17,18 @@ const TextStyle defaultStyle = TextStyle(
   fontWeight: FontWeight.w700,
   fontSize: 25,
 );
-const TextStyle smallerDefaultStyle = TextStyle(
+
+const TextStyle smallerDefaultStyleBlack = TextStyle(
   fontFamily: fontFamily,
   fontWeight: FontWeight.w700,
   color: Colors.black,
+  fontSize: 18,
+);
+
+const TextStyle smallerDefaultStyleWhite = TextStyle(
+  fontFamily: fontFamily,
+  fontWeight: FontWeight.w700,
+  color: Colors.white,
   fontSize: 18,
 );
 

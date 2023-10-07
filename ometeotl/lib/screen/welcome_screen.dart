@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ometeotl/constants.dart';
-import 'package:ometeotl/start_screen.dart';
+import 'package:ometeotl/screen/login_screen.dart';
 import 'package:ometeotl/widgets/background_scaffold.dart';
 import 'package:ometeotl/widgets/logo_image.dart';
 
@@ -20,7 +20,7 @@ class WelcomeScreen extends StatelessWidget {
                   top: 40.0, bottom: 40.0, left: 50.0, right: 50.0),
               child: GestureDetector(
                 onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const StartScreen())),
+                    MaterialPageRoute(builder: (_) => const SignUpScreen())),
                 child: Container(
                   height: MediaQuery.of(context).size.width / 8,
                   decoration: const BoxDecoration(
@@ -33,7 +33,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: const Center(
                     child: Text(
                       'Get Started',
-                      style: smallerDefaultStyle,
+                      style: smallerDefaultStyleWhite,
                     ),
                   ),
                 ),
