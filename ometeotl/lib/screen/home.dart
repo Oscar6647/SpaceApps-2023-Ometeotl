@@ -17,19 +17,19 @@ class _HomePageState extends State<HomePage> {
       switch (index) {
         case 0:
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ManageHomePage()));
+              MaterialPageRoute(builder: (context) => const HomePage()));
           break;
         case 1:
           // Navigate to 'Rewards' page
           // You can replace 'RewardsPage' with the actual widget for this page
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => const RewardsPage()));
+              context, MaterialPageRoute(builder: (context) => const HomePage()));
           break;
         case 2:
           // Navigate to 'Comparte' page
           // You can replace 'CompartePage' with the actual widget for this page
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const CommunityPage()));
+              MaterialPageRoute(builder: (context) => const HomePage()));
           break;
       }
     });
@@ -64,29 +64,25 @@ List<Widget> _buildCards() {
   ];
 }
 
-Future<void> signOut() async {
-  await Auth().signOut();
-}
-
   Widget _buildCard(
       {required Color color, required String text, required int index}) {
     return GestureDetector(
       onTap: () {
         if (index == 2) {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const GraphScreen()));
+              MaterialPageRoute(builder: (context) => const HomePage()));
         } 
         if(index == 3){
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const SettingsPage()));
+              MaterialPageRoute(builder: (context) => const HomePage()));
         }
         if(index == 4){
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const InversionPage()));
+              MaterialPageRoute(builder: (context) => const HomePage()));
         }
         if(index == 5){
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const LightBulbPage()));
+              MaterialPageRoute(builder: (context) => const HomePage()));
         }
         
        
@@ -135,7 +131,7 @@ Future<void> signOut() async {
             child: Text('Resourcify'),
           ),
           actions: [
-            IconButton(onPressed: signOut, icon: const Icon(Icons.logout)),
+            //IconButton(onPressed: , icon: const Icon(Icons.logout)),
             IconButton(
               icon: const Icon(Icons.home),
               onPressed: () {
