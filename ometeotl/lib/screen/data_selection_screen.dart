@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ometeotl/screen/home.dart';
 import 'package:ometeotl/widgets/card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -52,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   },
                   child: ContentCard(
-                    category: 'Rain Forecast',
+                    category: 'Weather Forecast',
                     thumbnailUrl: 'assets/weather.jpg',
                     icon: Icons.thunderstorm,
                   ),
@@ -63,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            HomeScreen(), // Replace RainForecastScreen with the desired screen
+                            HomePage(), // Replace RainForecastScreen with the desired screen
                       ),
                     );
                   },
