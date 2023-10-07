@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ometeotl/screen/home.dart';
 
 class ExplainScreen extends StatefulWidget {
   const ExplainScreen({Key? key}) : super(key: key);
@@ -141,7 +142,7 @@ class PageScreen extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                  //change this for home screen later
-                                    builder: (context) => const ExplainScreen()))
+                                    builder: (context) => const HomePage()))
                             : {
                                 pageController.animateToPage(nextPage,
                                     duration: const Duration(milliseconds: 500),
