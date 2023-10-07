@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ometeotl/explain_screen.dart';
-import 'package:ometeotl/signup_screen.dart';
 
-class StartScreen extends StatelessWidget {
-  const StartScreen({Key? key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,16 +46,45 @@ class StartScreen extends StatelessWidget {
                     ],
                   ),
                   padding: const EdgeInsets.all(20),
-                  child: Column(
+                  child: const Column(
                     children: [
-                      const Row(
+                      // Name field
+                      Row(
                         children: [
-                           Icon(
+                          Icon(
+                            Icons.person,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 10),
+                          Expanded(
+                            child: TextField(
+                              cursorColor: Colors.white,
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Name',
+                                hintStyle: TextStyle(
+                                    fontSize: 18.0, color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Divider(
+                        color: Colors.white,
+                      ),
+                      // Email field
+                      Row(
+                        children: [
+                          Icon(
                             Icons.mail_outline,
                             color: Colors.white,
                           ),
-                           SizedBox(width: 10),
-                           Expanded(
+                          SizedBox(width: 10),
+                          Expanded(
                             child: TextField(
                               cursorColor: Colors.white,
                               style: TextStyle(
@@ -72,11 +100,12 @@ class StartScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 10),
-                      const Divider(
+                      SizedBox(height: 10),
+                      Divider(
                         color: Colors.white,
                       ),
-                      const Row(
+                      // Password field
+                      Row(
                         children: [
                           Icon(
                             Icons.key,
@@ -101,36 +130,55 @@ class StartScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 10),
-                      const Divider(
+                      SizedBox(height: 10),
+                      Divider(
                         color: Colors.white,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          // Navigate to the SignUpScreen when clicked
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const SignUpScreen(),
-                            ),
-                          );
-                        },
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Create Account',
-                              style: TextStyle(color: Colors.blue, fontSize: 16),
-                            ),
-                            Text(
-                              'Sign Up',
+                      // Confirm Password field
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.key,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 10),
+                          Expanded(
+                            child: TextField(
+                              obscureText: true,
+                              cursorColor: Colors.white,
                               style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.blue,
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Confirm Password',
+                                hintStyle: TextStyle(
+                                    fontSize: 18.0, color: Colors.white),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Divider(
+                        color: Colors.white,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Already have an account?',
+                            style: TextStyle(color: Colors.blue, fontSize: 16),
+                          ),
+                          Text(
+                            'Log In',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

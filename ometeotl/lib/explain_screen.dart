@@ -148,9 +148,9 @@ class PageScreen extends StatelessWidget {
                                     curve: curve)
                               };
                       },
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: const [
+                        children: [
                           Text(
                             "Next",
                             style: TextStyle(
