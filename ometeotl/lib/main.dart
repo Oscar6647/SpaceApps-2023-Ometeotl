@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ometeotl/welcome.dart';
+import 'package:ometeotl/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ometeotl',
       theme: ThemeData(),
-      home: const Welcome(),
+      home: const WelcomeScreen(),
     );
   }
 }
