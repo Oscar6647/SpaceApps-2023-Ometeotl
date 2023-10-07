@@ -50,3 +50,4 @@ const TextStyle bigTextStyle = TextStyle(
 
 const Color paleteBlue = Color(0xff1D3BF4);
 const Color paleteLightBlue = Color(0xff10CCDE);
+const Color widgetColor = Color.fromARGB(49, 34, 170, 255);
