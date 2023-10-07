@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ometeotl/screen/data_selection_screen.dart';
 
+
 class ExplainScreen extends StatefulWidget {
   const ExplainScreen({Key? key}) : super(key: key);
 
@@ -151,7 +152,7 @@ class PageScreen extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                  
-                                    builder: (context) => const InfoHub()))
+                                    builder: (context) => const HomeScreen()))
                             : {
                                 pageController.animateToPage(nextPage,
                                     duration: const Duration(milliseconds: 500),
