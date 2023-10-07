@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            HomeScreen(), // Replace RainForecastScreen with the desired screen
+                            HomePage(), // Replace RainForecastScreen with the desired screen
                       ),
                     );
                   },
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            HomePage(), // Replace RainForecastScreen with the desired screen
+                            HomeScreen(), // Replace RainForecastScreen with the desired screen
                       ),
                     );
                   },
