@@ -19,30 +19,30 @@ class _ExplainScreenState extends State<ExplainScreen> {
         controller: pageController,
         children: [
           PageScreen(
+            backgroundImage: const AssetImage("assets/satelite.jpg"),
             pageController: pageController,
             titleText: "Welcome",
             descriptionText: "Easily access Earth data. Anytime, anywhere",
             icon: Icons.map,
             nextPage: 1,
-            backgroundColor: Colors.lightBlue,
             goNextPage: false,
           ),
           PageScreen(
+            backgroundImage: const AssetImage("assets/satelite2.jpg"),
             pageController: pageController,
             titleText: "Discover",
             descriptionText: "Learn new information about our planet",
             icon: Icons.cloud,
             nextPage: 2,
-            backgroundColor: Colors.purple,
             goNextPage: false,
           ),
           PageScreen(
+            backgroundImage: const AssetImage("assets/satelite3.jpg"),
             pageController: pageController,
             titleText: "Made for everyone",
             descriptionText: "Fiter information that's relevant to you",
             icon: Icons.people,
             nextPage: 3,
-            backgroundColor: Colors.red,
             goNextPage: true,
           ),
         ],
@@ -56,9 +56,9 @@ class PageScreen extends StatelessWidget {
   final String descriptionText;
   final IconData icon;
   final int nextPage;
-  final Color backgroundColor;
   final PageController pageController;
   final bool goNextPage;
+   final AssetImage backgroundImage;
 
   const PageScreen({
     super.key,
@@ -67,8 +67,8 @@ class PageScreen extends StatelessWidget {
     required this.descriptionText,
     required this.icon,
     required this.nextPage,
-    required this.backgroundColor,
     required this.goNextPage,
+    required this.backgroundImage,
   });
 
   @override
@@ -77,7 +77,15 @@ class PageScreen extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: backgroundColor,
+         image: DecorationImage(
+
+          image: backgroundImage, // Set the background image here
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+      Colors.black.withOpacity(0.6), // Set the opacity value here
+      BlendMode.darken,
+    ),
+         )
       ),
       child: SingleChildScrollView(
         child: Column(
@@ -95,7 +103,8 @@ class PageScreen extends StatelessWidget {
                   ),
                   Icon(
                     icon,
-                    size: (MediaQuery.of(context).size.height / 4),
+                    size: (MediaQuery.of(context).size.height / 5),
+                    color: Colors.white,
                   ),
                   const SizedBox(
                     height: 40,
