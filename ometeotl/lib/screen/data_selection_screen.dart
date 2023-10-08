@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            HomePage(), // Replace RainForecastScreen with the desired screen
+                            const HomePage(), // Replace RainForecastScreen with the desired screen
                       ),
                     );
                   },
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            HomeScreen(), // Replace RainForecastScreen with the desired screen
+                            const PollutionPage(), 
                       ),
                     );
                   },
@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            HomeScreen(), // Replace RainForecastScreen with the desired screen
+                            const WaterPage(), 
                       ),
                     );
                   },
