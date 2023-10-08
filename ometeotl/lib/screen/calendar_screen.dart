@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ometeotl/constants.dart';
 import 'package:ometeotl/screen/data_selection_screen.dart';
-import 'package:ometeotl/screen/home.dart';
 import 'package:ometeotl/widgets/background_scaffold.dart';
 import 'package:ometeotl/widgets/logo_image.dart';
 
@@ -59,15 +58,15 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
                       hintText: 'Tap to select a date',
                       suffixIcon: Icon(Icons.calendar_today, color: Colors.white),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white), // Set border color
+                        borderSide: BorderSide(color: Colors.white), 
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white), // Set border color when focused
+                        borderSide: BorderSide(color: Colors.white), 
                       ),
-                      labelStyle: TextStyle(color: Colors.white), // Set label color
-                      hintStyle: TextStyle(color: Colors.grey), // Set hint color
+                      labelStyle: TextStyle(color: Colors.white), 
+                      hintStyle: TextStyle(color: Colors.grey), 
                     ),
-                    style: const TextStyle(color: Colors.white), // Set text content color
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
               ],
@@ -88,19 +87,19 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
                 // Now you can send `selectedDateJson` to your Flask API
                 print(selectedDateJson);
 
-                // Replace this with the code to send the JSON data to your API
+                
                 // For example, you can call `fetchPrediction(selectedDateJson)` here
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0), // Rounded borders
+                  borderRadius: BorderRadius.circular(20.0), 
                 ),
-                primary: paleteLightBlue, // Light blue gradient
-                padding: EdgeInsets.all(20.0), // Larger size
+                primary: paleteLightBlue,
+                padding: EdgeInsets.all(20.0), 
               ),
               child: const Text(
                 'Send',
-                style: TextStyle(fontSize: 18.0), // Larger font size
+                style: TextStyle(fontSize: 18.0), 
               ),
             ),
           ],
