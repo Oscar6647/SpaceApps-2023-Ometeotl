@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:ometeotl/constants.dart';
+import 'package:ometeotl/screen/weather_page.dart';
 import 'package:ometeotl/widgets/background_scaffold.dart';
 import 'package:ometeotl/widgets/logo_image.dart';
 
@@ -23,7 +24,7 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
       context: context,
       initialDate: selectedDate,
       firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
+      lastDate: DateTime(2025),
     );
     if (picked != null && picked != selectedDate) {
       setState(() {
@@ -57,7 +58,7 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
 
       // Set the predictionValue variable to the received prediction
       setState(() {
-        predictionValue = 'Prediction: $prediction'; // Display the prediction with a label
+        predictionValue = '$prediction'; // Display the prediction with a label
       });
     } else {
       // Request failed, handle the error here
@@ -76,61 +77,77 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundScaffold(
-      imgPath: "assets/stars.jpeg",
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            const LogoImage(),
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: TextFormField(
-                    controller: dateController,
-                    readOnly: true,
-                    onTap: () => _selectDate(context),
-                    decoration: InputDecoration(
-                      labelText: 'Select Date',
-                      hintText: 'Tap to select a date',
-                      suffixIcon: Icon(Icons.calendar_today, color: Colors.white),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
+    return Scaffold( // Wrap with Scaffold
+      appBar: AppBar(
+        backgroundColor: const Color(0x44000000),
+        elevation: 20,
+        title: const Text("Choose a date to obtain predictions"),// Add AppBar here
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              // Handle settings button press
+            },
+          ),
+        ],
+      ),
+      body: BackgroundScaffold( // Wrap BackgroundScaffold here
+        imgPath: "assets/stars.jpeg",
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const LogoImage(),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: TextFormField(
+                      controller: dateController,
+                      readOnly: true,
+                      onTap: () => _selectDate(context),
+                      decoration: InputDecoration(
+                        labelText: 'Select Date',
+                        hintText: 'Tap to select a date',
+                        suffixIcon: Icon(Icons.calendar_today, color: Colors.white),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        labelStyle: TextStyle(color: Colors.white),
+                        hintStyle: TextStyle(color: Colors.grey),
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      labelStyle: TextStyle(color: Colors.white),
-                      hintStyle: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: Colors.white),
                     ),
-                    style: TextStyle(color: Colors.white),
                   ),
-                ),
-              ],
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                await sendSelectedDate(selectedDate);
-                
-              },
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                primary: paleteLightBlue,
-                padding: EdgeInsets.all(20.0),
+                ],
               ),
-              child: const Text(
-                'Send',
-                style: TextStyle(fontSize: 18.0),
+              ElevatedButton(
+                onPressed: () async {
+                  await sendSelectedDate(selectedDate);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WeatherPage(predictionValue: predictionValue), // Pass the predictionValue
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  primary: paleteLightBlue,
+                  padding: EdgeInsets.all(20.0),
+                ),
+                child: const Text(
+                  'Send',
+                  style: TextStyle(fontSize: 18.0),
+                ),
               ),
-            ),
-            Text(
-              predictionValue,
-              style: TextStyle(color: Colors.white),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

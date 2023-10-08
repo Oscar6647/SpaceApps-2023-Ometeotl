@@ -4,7 +4,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ometeotl/screen/forms_screen.dart';
 
 class WeatherPage extends StatefulWidget {
-  const WeatherPage({Key? key}) : super(key: key);
+   final String predictionValue; // Add this line
+
+  const WeatherPage({Key? key, required this.predictionValue}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -63,7 +65,11 @@ class _WeatherPageState extends State<WeatherPage> {
           description: 'Precipitation risk',
           index: 6,
           icon: Icons.storm,
-          data: "83"),
+          data: widget.predictionValue != null
+    ? double.parse(widget.predictionValue).toStringAsFixed(2)
+    : 'N/A', // Replace 'N/A' with a default value if predictionValue is null
+ // Replace 'N/A' with a default value if predictionValue is null
+),
       _buildCard(
           color: widgetColor,
           text: "Surface Pressure",
@@ -213,7 +219,7 @@ class _WeatherPageState extends State<WeatherPage> {
               icon: const Icon(Icons.settings),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const WeatherPage()));
+                    MaterialPageRoute(builder: (context) => FormsScreen()));
               },
             ),
           ],

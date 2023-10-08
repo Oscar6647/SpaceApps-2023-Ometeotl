@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for your Flask app
 
 # Load your CSV data into a DataFrame
-data = pd.read_csv('Template_Pred.csv')
+data = pd.read_csv('Precip_Hist_Pred.csv')
 
 @app.route('/', methods=['POST'])
 def make_prediction():
