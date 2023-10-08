@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class BackgroundScaffold extends StatelessWidget {
   final Widget child;
-  const BackgroundScaffold({required this.child, super.key});
+  final String imgPath;
+  const BackgroundScaffold({required this.child, required this.imgPath, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,9 +11,9 @@ class BackgroundScaffold extends StatelessWidget {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/stars.jpeg"), fit: BoxFit.cover),
+              image: AssetImage(imgPath), fit: BoxFit.cover),
         ),
         child: SafeArea(child: child),
       ),

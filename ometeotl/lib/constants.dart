@@ -11,9 +11,16 @@ const double smallerSpacerHeight = 10;
 
 const String fontFamily = "Manrope";
 
-const TextStyle defaultStyle = TextStyle(
+const TextStyle defaultStyleBlack = TextStyle(
   fontFamily: fontFamily,
   color: Colors.black,
+  fontWeight: FontWeight.w700,
+  fontSize: 25,
+);
+
+const TextStyle defaultStyleWhite= TextStyle(
+  fontFamily: fontFamily,
+  color: Colors.white,
   fontWeight: FontWeight.w700,
   fontSize: 25,
 );
@@ -51,3 +58,4 @@ const TextStyle bigTextStyle = TextStyle(
 const Color paleteBlue = Color(0xff1D3BF4);
 const Color paleteLightBlue = Color(0xff10CCDE);
 const Color widgetColor = Color.fromARGB(49, 34, 170, 255);
+const Color widgetColorLight = Color.fromARGB(59, 146, 191, 219);

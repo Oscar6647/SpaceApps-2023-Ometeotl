@@ -21,7 +21,7 @@ class _WaterPageState extends State<WaterPage> {
   List<Widget> _buildCards() {
     return [
       _buildCard(
-        color: widgetColor,
+        color: widgetColorLight,
         text: 'Temperature',
         description: 'Current temperature',
         index: 1,
@@ -29,63 +29,63 @@ class _WaterPageState extends State<WaterPage> {
         data: "data",
       ),
       _buildCard(
-          color: widgetColor,
+          color: widgetColorLight,
           text: 'Wet Bulb Temp',
           description: 'Moistened thermometer temperature',
           index: 2,
           icon: Icons.dew_point,
           data: "21"),
       _buildCard(
-          color: widgetColor, // Change color to purple
+          color: widgetColorLight, // Change color to purple
           text: 'Earth Surf Temp', // Change text to "Recomendaciones de Ahorro"
           description: 'Earth surface temperature',
           index: 3, // Update the index if needed
           icon: Icons.thermostat_auto,
           data: "920"),
       _buildCard(
-          color: widgetColor,
+          color: widgetColorLight,
           text: 'Specific humidity', // Change text to "Mi Inversión"
           description: 'Total water in the atmosphere',
           index: 4, // Update the index if needed
           icon: Icons.water_drop,
           data: "920"),
       _buildCard(
-          color: widgetColor,
+          color: widgetColorLight,
           text: "Relative humidity",
           description: 'Humidity according to atmosphere capacity',
           index: 5,
           icon: Icons.water_drop_sharp,
           data: "12"),
       _buildCard(
-          color: widgetColor,
+          color: widgetColorLight,
           text: "Precipitation",
           description: 'Precipitation risk',
           index: 6,
           icon: Icons.storm,
           data: "83"),
       _buildCard(
-          color: widgetColor,
+          color: widgetColorLight,
           text: "Surface Pressure",
           description: 'Surface pressure',
           index: 7,
           icon: Icons.compare_arrows,
           data: "83"),
       _buildCard(
-          color: widgetColor,
+          color: widgetColorLight,
           text: "Wind Speed (2m)",
           description: 'Speed in a 2m radius',
           index: 8,
           icon: Icons.air,
           data: "83"),
       _buildCard(
-          color: widgetColor,
+          color: widgetColorLight,
           text: "Wind Speed (10m)",
           description: 'Speed in a 10m radius',
           index: 6,
           icon: Icons.air_sharp,
           data: "83"),
       _buildCard(
-          color: widgetColor,
+          color: widgetColorLight,
           text: "Wind direction",
           description: 'Wind direction',
           index: 9,
@@ -141,7 +141,7 @@ class _WaterPageState extends State<WaterPage> {
                   data,
                   textAlign: TextAlign.center,
                   softWrap: true,
-                  overflow: TextOverflow.ellipsis,
+                  overflow: TextOverflow.clip,
                   maxLines: 2,
                   style: const TextStyle(
                     fontSize: 26,
@@ -181,10 +181,14 @@ class _WaterPageState extends State<WaterPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/clouds.jpg"),
+          image: const AssetImage("/water2.jpeg"),
           fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+            Colors.black.withOpacity(0.6),
+            BlendMode.darken,
+          ), // Set the opacity value here)),
         ),
       ),
       child: Scaffold(
@@ -192,7 +196,7 @@ class _WaterPageState extends State<WaterPage> {
         appBar: AppBar(
           title: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text('Weather'),
+            child: Text('Water'),
           ),
           actions: [
             //IconButton(onPressed: , icon: const Icon(Icons.logout)),
@@ -219,7 +223,7 @@ class _WaterPageState extends State<WaterPage> {
               children: [
                 const SizedBox(height: 20),
                 const Text(
-                  'Precipitation, hail and flood risk',
+                  'Water data',
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       fontSize: 20,
@@ -273,7 +277,7 @@ class _WaterPageState extends State<WaterPage> {
                   height: 40,
                   width: MediaQuery.of(context).size.width,
                   child: const Card(
-                    color: widgetColor,
+                    color: widgetColorLight,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),

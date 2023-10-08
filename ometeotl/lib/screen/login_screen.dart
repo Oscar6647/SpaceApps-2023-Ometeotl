@@ -14,6 +14,7 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return const BackgroundScaffold(
+      imgPath: "assets/stars.jpeg",
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -34,6 +35,7 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const BackgroundScaffold(
+      imgPath: "assets/stars.jpeg",
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
