@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ContentCard extends StatefulWidget {
   final String category;
   final IconData icon;
