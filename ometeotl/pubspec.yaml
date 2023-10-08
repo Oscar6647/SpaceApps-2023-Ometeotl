@@ -9,6 +9,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  carousel_slider: ^4.0.0
+
   cupertino_icons: ^1.0.2
   google_fonts: ^6.1.0
   carousel_slider: ^4.2.1
