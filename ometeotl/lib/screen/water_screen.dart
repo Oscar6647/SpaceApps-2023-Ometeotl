@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ometeotl/constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ometeotl/screen/forms_screen.dart';
 
 class WaterPage extends StatefulWidget {
   const WaterPage({Key? key}) : super(key: key);
@@ -203,7 +204,12 @@ class _WaterPageState extends State<WaterPage> {
             IconButton(
               icon: const Icon(Icons.message),
               onPressed: () {
-                // Handle home button press (e.g., navigate to home page)
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          FormsScreen()), // Replace YourScreen with the desired screen
+                );
               },
             ),
 

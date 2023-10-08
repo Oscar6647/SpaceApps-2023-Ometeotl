@@ -93,21 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Icons.water_drop,
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FormsScreen(),
-                      ),
-                    );
-                  },
-                  child: ContentCard(
-                    category: 'Upload Data',
-                    thumbnailUrl: 'assets/form.jpeg',
-                    icon: Icons.thunderstorm,
-                  ),
-                ),
+                
                 const SizedBox(
                   height: 20,
                 ),
