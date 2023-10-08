@@ -2,3 +2,6 @@ flask
 flask_cors
 datetime
 pandas
+geopandas
+shapely
+matplotlib
