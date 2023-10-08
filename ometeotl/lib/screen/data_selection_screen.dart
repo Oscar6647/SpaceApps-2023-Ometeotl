@@ -5,15 +5,15 @@ import 'package:ometeotl/screen/pollution_screen.dart';
 import 'package:ometeotl/screen/water_screen.dart';
 import 'package:ometeotl/widgets/content_card.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class DataSelection extends StatefulWidget {
+  const DataSelection({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _HomeScreenState createState() => _HomeScreenState();
+  _DataSelectionState createState() => _DataSelectionState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _DataSelectionState extends State<DataSelection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            const HomePage(), // Replace RainForecastScreen with the desired screen
+                            const WeatherPage(), // Replace RainForecastScreen with the desired screen
                       ),
                     );
                   },

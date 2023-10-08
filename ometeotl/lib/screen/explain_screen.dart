@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ometeotl/screen/calendar_screen.dart';
 import 'package:ometeotl/screen/data_selection_screen.dart';
 
 
@@ -151,7 +152,7 @@ class PageScreen extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                  
-                                    builder: (context) => const HomeScreen()))
+                                    builder: (context) => const DateSelectionScreen()))
                             : {
                                 pageController.animateToPage(nextPage,
                                     duration: const Duration(milliseconds: 500),

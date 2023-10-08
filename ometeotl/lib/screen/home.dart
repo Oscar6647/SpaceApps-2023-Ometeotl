@@ -3,15 +3,15 @@ import 'package:ometeotl/constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ometeotl/screen/forms_screen.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class WeatherPage extends StatefulWidget {
+  const WeatherPage({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _HomePageState createState() => _HomePageState();
+  _WeatherPageState createState() => _WeatherPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _WeatherPageState extends State<WeatherPage> {
   List<Widget> carouselItems = [
     Image.asset('assets/satelite.jpg'),
     Image.asset('assets/satelite2.jpg'),
@@ -213,7 +213,7 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.settings),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const HomePage()));
+                    MaterialPageRoute(builder: (context) => const WeatherPage()));
               },
             ),
           ],
