@@ -1,29 +1,30 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS  # Import CORS from flask_cors
+from flask_cors import CORS
+import pickle
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for your Flask app
 
+# Load your machine learning model from the .pkl file
+with open('watermodel_pkl', 'rb') as model_file:
+    loaded_model = pickle.load(model_file)
+
 @app.route('/', methods=['POST'])
-def process_selected_date():
+def make_prediction():
     try:
         data = request.get_json()  # Parse incoming JSON data
 
         # Check if the required fields are present in the JSON data
-        if 'year' in data and 'month' in data and 'day' in data:
-            year = data['year']
-            month = data['month']
-            day = data['day']
+        if 'features' in data:
+            features = data['features']
 
-            # Perform your processing with the selected date data here
-            # For example, you can use the data to make predictions
+            # Perform predictions or other operations using the loaded object
+            result = loaded_model.predict([features])
 
-            # Replace this with your processing logic
+            # Format the results
             result = {
-                'message': 'Date processed successfully',
-                'year': year,
-                'month': month,
-                'day': day
+                'message': 'Prediction successful',
+                'prediction': result.tolist()  # Convert predictions to a list
             }
 
             return jsonify(result), 200
