@@ -1,157 +1,138 @@
 import 'package:flutter/material.dart';
 import 'package:ometeotl/screen/home.dart';
-import 'package:ometeotl/widgets/pollution_card.dart';
-import 'package:ometeotl/widgets/rainbox_card.dart';
-import 'package:ometeotl/widgets/water_card.dart';
+import 'package:ometeotl/widgets/card.dart';
 
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
-class InfoHub extends StatelessWidget {
-  const InfoHub({Key? key}) : super(key: key);
+  @override
+  // ignore: library_private_types_in_public_api
+  _HomeScreenState createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height / 1.5,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: const AssetImage("assets/fondoWelcome.jpg"),
-                fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(
-                  Colors.blueAccent.withOpacity(0.3),
-                  BlendMode.srcOver,
-                ),
-              ),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+//        backgroundColor: Colors.transparent,
+        backgroundColor: const Color(0x44000000),
+        elevation: 20,
+        title: const Text("Select Data"),
+      ),
+      body: Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: const AssetImage("assets/galaxy.jpg"),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.5), // Set the opacity value here
+              BlendMode.darken,
             ),
           ),
-          Column(
-            children: [
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50.0, left: 10.0),
-                    child: Row(
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: const Icon(
-                              Icons.arrow_back_ios,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 90),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 45,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            HomePage(), // Replace RainForecastScreen with the desired screen
+                      ),
+                    );
+                  },
+                  child: ContentCard(
+                    category: 'Weather Forecast',
+                    thumbnailUrl: 'assets/weather.jpg',
+                    icon: Icons.thunderstorm,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            HomeScreen(), // Replace RainForecastScreen with the desired screen
+                      ),
+                    );
+                  },
+                  child: ContentCard(
+                    category: 'Pollution',
+                    thumbnailUrl: 'assets/pollution.jpg',
+                    icon: Icons.factory,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            HomeScreen(), // Replace RainForecastScreen with the desired screen
+                      ),
+                    );
+                  },
+                  child: ContentCard(
+                    category: 'Water Flow',
+                    thumbnailUrl: 'assets/water.jpg',
+                    icon: Icons.water_drop,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                      );
+                      {}
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.only(right: 10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          /*Text(
+                            "Next",
+                            style: TextStyle(
+                              fontSize: 20,
                               color: Colors.white,
-                            )),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        const Text(
-                          "Back",
-                          style: TextStyle(
-                              fontFamily: "Manrope",
-                              fontSize: 18,
-                              color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                    child: HomePage(),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          color: Color(0xff151515),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              spreadRadius: .8,
-                              blurRadius: 4,
-                              offset: Offset(1, 2),
                             ),
-                          ],
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            topRight: Radius.circular(30),
+                          ),*/
+                          SizedBox(
+                            width: 10,
                           ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 10, left: 8.0, right: 8.0),
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.only(left: 8.0),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      "Data for: 24/09/23",
-                                      style: TextStyle(
-                                        fontFamily: "Manrope",
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                child: SizedBox(
-                                  height: 1200,
-                                  child: GridView(
-                                    gridDelegate:
-                                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                                      maxCrossAxisExtent: 300,
-                                      childAspectRatio: 1,
-                                      crossAxisSpacing: 10,
-                                      mainAxisSpacing: 10,
-                                    ),
-                                    children:  [
-                                      RainBoxCard(
-                                        text: "Rain Forecast",
-                                        // icon: Icons.thunderstorm,
-                                        image: "assets/water.jpg",
-                                      ),
-                                      const PollutionBoxCard(
-                                        text: "Pollution",
-                                        icon: Icons.factory,
-                                        image: "assets/pollution.jpg",
-                                      ),
-                                      /*PandemicBoxCard(
-                                        text: "COVID-19",
-                                        icon: Icons.coronavirus,
-                                        image: "assets/covid.jpg",
-                                      ),*/
-                                      const WaterBoxCard(
-                                        text: "Water Flow",
-                                        icon: Icons.water_drop,
-                                        image: "assets/supplywater.jpg",
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                          /*Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.white,
+                          ),*/
+                        ],
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
           ),
-        ],
+        ),
       ),
     );
   }
