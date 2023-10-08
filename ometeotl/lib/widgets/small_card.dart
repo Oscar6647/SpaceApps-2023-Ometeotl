@@ -14,23 +14,23 @@ class SmallCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(20.0), // Increased padding for more size
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.7), // Transparent background with opacity
+        color: Colors.black.withOpacity(0.3), // Transparent background with opacity
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: Column(
         children: [
           Icon(
             icon,
-            size: 36.0,
+            size: 48.0, // Increased icon size
             color: Colors.white, // Icon color
           ),
-          SizedBox(height: 8.0),
+          SizedBox(height: 12.0), // Increased spacing
           Text(
             text,
             style: TextStyle(
-              fontSize: 14.0,
+              fontSize: 18.0, // Increased text size
               fontWeight: FontWeight.bold,
               color: Colors.white, // Text color
             ),
@@ -39,7 +39,7 @@ class SmallCard extends StatelessWidget {
           Text(
             '${percentage.toStringAsFixed(1)}%',
             style: TextStyle(
-              fontSize: 12.0,
+              fontSize: 16.0, // Increased text size
               color: Colors.white, // Text color
             ),
           ),

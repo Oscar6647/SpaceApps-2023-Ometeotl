@@ -79,7 +79,6 @@ class PageScreen extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
          image: DecorationImage(
-
           image: backgroundImage, // Set the background image here
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(

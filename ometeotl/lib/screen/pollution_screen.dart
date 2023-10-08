@@ -16,7 +16,7 @@ class _PollutionPageState extends State<PollutionPage> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/pollutionPage.jpg"),
+          image: AssetImage("assets/pollution.jpg"),
           fit: BoxFit.cover,
         ),
       ),
@@ -157,7 +157,7 @@ class _PollutionPageState extends State<PollutionPage> {
                 ),
                 const SizedBox(height: 20),
                 Container(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
                   decoration: BoxDecoration(
                     color: Colors.transparent.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(16.0),
@@ -166,7 +166,7 @@ class _PollutionPageState extends State<PollutionPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Recommendations:',
+                        'Some recommendations:',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -174,10 +174,10 @@ class _PollutionPageState extends State<PollutionPage> {
                         ),
                       ),
                       SizedBox(height: 20),
-                      Text('• Recommendation 1', style: TextStyle(color: Colors.white),),
-                      Text('• Recommendation 2', style: TextStyle(color: Colors.white)),
-                      Text('• Recommendation 3', style: TextStyle(color: Colors.white)),
-                      Text('• Recommendation 4', style: TextStyle(color: Colors.white)),
+                      Text('• Minimize outdoor exposure and opt for outdoor activities during cleaner times, such as early morning or evening.', style: TextStyle(color: Colors.white),),
+                      Text('• Employ HEPA filter-equipped air purifiers indoors to reduce indoor air pollution and improve overall air quality.', style: TextStyle(color: Colors.white)),
+                      Text('• Stay updated on real-time air quality through apps or websites to plan outdoor activities wisely during varying pollution levels.', style: TextStyle(color: Colors.white)),
+                      Text('• Cut down on car usage during elevated pollution days to decrease emissions and consider alternative transportation options like carpooling or public transit.', style: TextStyle(color: Colors.white)),
                     ],
                   ),
                 ),

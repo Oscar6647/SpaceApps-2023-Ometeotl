@@ -11,7 +11,7 @@ class AirQualityGraph extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.7), // Transparent background with opacity
+        color: Colors.black.withOpacity(0.3), // Transparent background with opacity
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: Column(
