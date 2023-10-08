@@ -11,32 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-//   int _selectedIndex = 0;
-
-//   void _onItemTapped(int index) {
-//     setState(() {
-//       _selectedIndex = index;
-//       switch (index) {
-//         case 0:
-//           Navigator.push(context,
-//               MaterialPageRoute(builder: (context) => const HomePage()));
-//           break;
-//         case 1:
-//           // Navigate to 'Rewards' page
-//           // You can replace 'RewardsPage' with the actual widget for this page
-//           Navigator.push(context,
-//               MaterialPageRoute(builder: (context) => const HomePage()));
-//           break;
-//         case 2:
-//           // Navigate to 'Comparte' page
-//           // You can replace 'CompartePage' with the actual widget for this page
-//           Navigator.push(context,
-//               MaterialPageRoute(builder: (context) => const HomePage()));
-//           break;
-//       }
-//     });
-//   }
-
   List<Widget> carouselItems = [
     Image.asset('assets/satelite.jpg'),
     Image.asset('assets/satelite2.jpg'),
@@ -48,40 +22,74 @@ class _HomePageState extends State<HomePage> {
     return [
       _buildCard(
         color: widgetColor,
-        text: 'Tips de ahorro',
+        text: 'Temperature',
+        description: 'Current temperature',
         index: 1,
-        icon: Icons.water_drop,
+        icon: Icons.thermostat,
         data: "data",
       ),
       _buildCard(
           color: widgetColor,
-          text: 'Predicción de consumo',
+          text: 'Wet Bulb Temp',
+          description: 'Moistened thermometer temperature',
           index: 2,
-          icon: Icons.cloud,
+          icon: Icons.dew_point,
           data: "21"),
       _buildCard(
           color: widgetColor, // Change color to purple
-          text: 'Mi cuenta', // Change text to "Recomendaciones de Ahorro"
+          text: 'Earth Surf Temp', // Change text to "Recomendaciones de Ahorro"
+          description: 'Earth surface temperature',
           index: 3, // Update the index if needed
-          icon: Icons.water_drop,
+          icon: Icons.thermostat_auto,
           data: "920"),
       _buildCard(
           color: widgetColor,
-          text: 'Mi Inversión', // Change text to "Mi Inversión"
+          text: 'Specific humidity', // Change text to "Mi Inversión"
+          description: 'Total water in the atmosphere',
           index: 4, // Update the index if needed
           icon: Icons.water_drop,
           data: "920"),
       _buildCard(
           color: widgetColor,
-          text: "Sync con dispositivo",
+          text: "Relative humidity",
+          description: 'Humidity according to atmosphere capacity',
           index: 5,
-          icon: Icons.water_drop,
+          icon: Icons.water_drop_sharp,
           data: "12"),
       _buildCard(
           color: widgetColor,
-          text: "Sync con dispositivo",
+          text: "Precipitation",
+          description: 'Precipitation risk',
           index: 6,
-          icon: Icons.water_drop,
+          icon: Icons.storm,
+          data: "83"),
+      _buildCard(
+          color: widgetColor,
+          text: "Surface Pressure",
+          description: 'Surface pressure',
+          index: 7,
+          icon: Icons.compare_arrows,
+          data: "83"),
+      _buildCard(
+          color: widgetColor,
+          text: "Wind Speed (2m)",
+          description: 'Speed in a 2m radius',
+          index: 8,
+          icon: Icons.air,
+          data: "83"),
+      _buildCard(
+          color: widgetColor,
+          text: "Wind Speed (10m)",
+          description: 'Speed in a 10m radius',
+          index: 6,
+          icon: Icons.air_sharp,
+          data: "83"),
+      _buildCard(
+          color: widgetColor,
+          text: "Wind direction",
+          description: 'Wind direction',
+          index: 9,
+          icon: Icons.air,
           data: "83"),
     ];
   }
@@ -91,26 +99,9 @@ class _HomePageState extends State<HomePage> {
       required String text,
       required int index,
       required IconData icon,
-      required String data}) {
+      required String data,
+      required String description}) {
     return GestureDetector(
-      onTap: () {
-        if (index == 2) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const HomePage()));
-        }
-        if (index == 3) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const HomePage()));
-        }
-        if (index == 4) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const HomePage()));
-        }
-        if (index == 5) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const HomePage()));
-        }
-      },
       child: Card(
         color: color,
         shape: RoundedRectangleBorder(
@@ -120,17 +111,15 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Icon(
-                    icon,
-                    color: Colors.white,
-                  ),
                   Text(
                     text,
                     textWidthBasis: TextWidthBasis.parent,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.left,
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
@@ -140,29 +129,47 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.white, // Text color
                     ),
                   ),
+                  Text(
+                    description,
+                    textAlign: TextAlign.left,
+                  ),
                 ],
               ),
-              Text(
-                data,
-                textAlign: TextAlign.center,
-                softWrap: true,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                style: const TextStyle(
-                  fontSize: 26,
-                  color: Colors.white, // Text color
+              Container(
+                alignment: Alignment.center,
+                child: Text(
+                  data,
+                  textAlign: TextAlign.center,
+                  softWrap: true,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  style: const TextStyle(
+                    fontSize: 26,
+                    color: Colors.white, // Text color
+                  ),
                 ),
               ),
-              const Text(
-                'Mexico',
-                textAlign: TextAlign.left,
-                softWrap: true,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                style: TextStyle(
-                  fontSize: 19,
-                  color: Colors.white, // Text color
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                      alignment: Alignment.bottomLeft,
+                      child: const Text(
+                        'Mexico',
+                        textAlign: TextAlign.left,
+                        softWrap: true,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        style: TextStyle(
+                          fontSize: 19,
+                          color: Colors.white, // Text color
+                        ),
+                      )),
+                  Icon(
+                    icon,
+                    color: Colors.white,
+                  ),
+                ],
               )
             ],
           ),
@@ -256,7 +263,7 @@ class _HomePageState extends State<HomePage> {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                   ),
-                  itemCount: 6,
+                  itemCount: 9,
                   itemBuilder: (context, index) {
                     return _buildCards()[index];
                   },
