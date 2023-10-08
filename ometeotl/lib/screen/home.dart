@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ometeotl/constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ometeotl/screen/forms_screen.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class WeatherPage extends StatefulWidget {
   const WeatherPage({Key? key}) : super(key: key);
@@ -18,6 +20,32 @@ class _WeatherPageState extends State<WeatherPage> {
     Image.asset('assets/satelite3.jpg'),
     // Add more images as needed
   ];
+
+Future<void> sendLocation(int long, int lat) async {
+    final apiUrl = 'http://127.0.0.1:5000/getHeatMap'; // Replace with your Flask API URL
+
+    final location = {
+      'longitud': long,
+      'latitude': lat,
+    };
+
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(location),
+    );
+
+    if (response.statusCode == 200) {
+      // Request was successful, handle the response here
+      print('Response: ${response.body}');
+    } else {
+      // Request failed, handle the error here
+      print('Error: ${response.statusCode}');
+    }
+  }
+
 
   List<Widget> _buildCards() {
     return [
@@ -103,6 +131,9 @@ class _WeatherPageState extends State<WeatherPage> {
       required String data,
       required String description}) {
     return GestureDetector(
+      onTap: () async {
+        await sendLocation(-99,19);
+      },
       child: Card(
         color: color,
         shape: RoundedRectangleBorder(

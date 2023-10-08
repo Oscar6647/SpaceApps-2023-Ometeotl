@@ -33,24 +33,24 @@ class _WaterPageState extends State<WaterPage> {
     int humidity = 0;
     int wetBulbTemp;
 
-    const url = 'http://127.0.0.1:5000/weather';
-        fetchData(String url) async {
-          final response = await http.get(
-              Uri.parse(url),
-              headers: <String, String>{
-                'Content-Type': 'application/json; charset=UTF-8',
-              },
+    // const url = 'http://127.0.0.1:5000/weather';
+    //     fetchData(String url) async {
+    //       final response = await http.get(
+    //           Uri.parse(url),
+    //           headers: <String, String>{
+    //             'Content-Type': 'application/json; charset=UTF-8',
+    //           },
 
-              );
-              Map<String, dynamic> info = json.decode(response.body);
-              temp = info['temperature'];
-              humidity = info['humidity'];
-              // wetBulbTemp = info['wetBulbTemp'];
-              print(temp);
+    //           );
+    //           Map<String, dynamic> info = json.decode(response.body);
+    //           temp = info['temperature'];
+    //           humidity = info['humidity'];
+    //           // wetBulbTemp = info['wetBulbTemp'];
+    //           print(temp);
 
-        }
+    //     }
 
-        fetchData(url);
+    //     fetchData(url);
     return [
       _buildCard(
         color: widgetColorLight,

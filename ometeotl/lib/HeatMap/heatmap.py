@@ -6,11 +6,19 @@ class heatmaps:
     #The class initializes the dataframes of all three datasets and list of dfs for easy access
 
     def __init__(self):
-        self.df_inundacion = gpd.read_file('/Users/drossi/DevDownloads/atlas_de_riesgo_inundaciones/atlas_de_riesgo_inundaciones.shp')
-        self.df_precipitacion = gpd.read_file('/Users/drossi/DevDownloads/atlas_de_riesgo_precipitacion/atlas_de_riesgo_precipitacion.shp')
-        self.df_granizo =  gpd.read_file('/Users/drossi/DevDownloads/atlas_de_riesgo_granizo/atlas_de_riesgo_granizo.shp')
-        self.lista_df = [self.df_inundacion, self.df_precipitacion, self.df_granizo]
+        # filename = "atlas_de_riesgo_precipitacion.shp"
+        # file = open(filename)
+        print('loading data...')
 
+        try:
+            self.df_inundacion = gpd.read_file('http://127.0.0.1:5000/shapefile/atlas_de_riesgo_precipitacion.shp')
+        
+        except Exception as e:
+            print("ERROR LOADING")
+            print(e)
+        #self.df_precipitacion = gpd.read_file(file)
+        # self.df_granizo =  gpd.read_file('atlas_de_riesgo_granizo.shp')
+        # self.lista_df = [self.df_inundacion, self.df_precipitacion, self.df_granizo]
     #Simple plot function
     
     def plot(self, num):
