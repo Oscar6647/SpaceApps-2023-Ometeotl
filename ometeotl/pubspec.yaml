@@ -1,6 +1,7 @@
 name: ometeotl
 description: An application that allows people to see important data 
 publish_to: 'none'
+version: 1.0.0+1
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
