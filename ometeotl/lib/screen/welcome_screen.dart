@@ -10,6 +10,7 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackgroundScaffold(
+      imgPath: "assets/stars.jpeg",
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

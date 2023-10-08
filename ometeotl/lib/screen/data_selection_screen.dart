@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ometeotl/screen/forms_screen.dart';
 import 'package:ometeotl/screen/home.dart';
-import 'package:ometeotl/widgets/card.dart';
+import 'package:ometeotl/widgets/content_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -90,40 +91,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Icons.water_drop,
                   ),
                 ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
-                        ),
-                      );
-                      {}
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.only(right: 10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          /*Text(
-                            "Next",
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                            ),
-                          ),*/
-                          SizedBox(
-                            width: 10,
-                          ),
-                          /*Icon(
-                            Icons.arrow_forward_ios,
-                            color: Colors.white,
-                          ),*/
-                        ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FormsScreen(),
                       ),
-                    ),
+                    );
+                  },
+                  child: ContentCard(
+                    category: 'Upload Data',
+                    thumbnailUrl: 'assets/form.jpeg',
+                    icon: Icons.thunderstorm,
                   ),
                 ),
                 const SizedBox(
