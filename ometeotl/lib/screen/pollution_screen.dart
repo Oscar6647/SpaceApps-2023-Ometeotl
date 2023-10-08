@@ -104,24 +104,54 @@ class _PollutionPageState extends State<PollutionPage> {
                 Container(
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    //color: Colors.white,
                     borderRadius: BorderRadius.circular(16.0),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SmallCard(
-              icon: Icons.star,
-              text: 'Rating',
-              percentage: 4.5,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SmallCard(
+                  icon: Icons.cloud,
+                  text: 'Clouds',
+                  percentage: 20.0,
+                ),
+                SmallCard(
+                  icon: Icons.waves,
+                  text: 'Waves',
+                  percentage: 40.0,
+                ),
+                SmallCard(
+                  icon: Icons.waves,
+                  text: 'Waves',
+                  percentage: 40.0,
+                ),
+              ],
             ),
-            SizedBox(height: 16.0), // Add spacing between cards if needed
-            SmallCard(
-              icon: Icons.favorite,
-              text: 'Likes',
-              percentage: 85.0,
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SmallCard(
+                  icon: Icons.cloud,
+                  text: 'Clouds',
+                  percentage: 20.0,
+                ),
+                SmallCard(
+                  icon: Icons.waves,
+                  text: 'Waves',
+                  percentage: 40.0,
+                ),
+                SmallCard(
+                  icon: Icons.waves,
+                  text: 'Waves',
+                  percentage: 40.0,
+                ),
+              ],
             ),
-
+            
               ])
               ,
                 ),
@@ -129,7 +159,7 @@ class _PollutionPageState extends State<PollutionPage> {
                 Container(
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.transparent.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(16.0),
                   ),
                   child: const Column(
@@ -140,13 +170,14 @@ class _PollutionPageState extends State<PollutionPage> {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                       SizedBox(height: 20),
-                      Text('• Recommendation 1'),
-                      Text('• Recommendation 2'),
-                      Text('• Recommendation 3'),
-                      Text('• Recommendation 4'),
+                      Text('• Recommendation 1', style: TextStyle(color: Colors.white),),
+                      Text('• Recommendation 2', style: TextStyle(color: Colors.white)),
+                      Text('• Recommendation 3', style: TextStyle(color: Colors.white)),
+                      Text('• Recommendation 4', style: TextStyle(color: Colors.white)),
                     ],
                   ),
                 ),
