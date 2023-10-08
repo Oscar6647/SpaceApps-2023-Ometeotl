@@ -33,7 +33,7 @@ class _PollutionPageState extends State<PollutionPage> {
           ),
           actions: [
             IconButton(
-              icon: const Icon(Icons.home),
+              icon: const Icon(Icons.message),
               onPressed: () {
                 // Handle home button press (e.g., navigate to home page)
               },

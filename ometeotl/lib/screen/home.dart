@@ -197,7 +197,7 @@ class _HomePageState extends State<HomePage> {
           actions: [
             //IconButton(onPressed: , icon: const Icon(Icons.logout)),
             IconButton(
-              icon: const Icon(Icons.home),
+              icon: const Icon(Icons.message),
               onPressed: () {
                 // Handle home button press (e.g., navigate to home page)
               },
