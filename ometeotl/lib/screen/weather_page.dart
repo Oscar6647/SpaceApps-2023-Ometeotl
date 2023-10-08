@@ -16,9 +16,9 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   List<Widget> carouselItems = [
-    Image.asset('assets/satelite.jpg'),
-    Image.asset('assets/satelite2.jpg'),
-    Image.asset('assets/satelite3.jpg'),
+    Image.asset('/cuau1.png'),
+    Image.asset('/cuau2.png'),
+    Image.asset('/cuau3.png'),
     // Add more images as needed
   ];
 
