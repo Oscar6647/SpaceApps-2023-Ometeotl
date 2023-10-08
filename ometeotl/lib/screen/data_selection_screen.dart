@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            HomeScreen(), 
+                            PollutionPage(), 
                       ),
                     );
                   },
@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            const PollutionPage(), 
+                            const HomePage(), 
                       ),
                     );
                   },
