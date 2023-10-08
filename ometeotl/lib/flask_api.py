@@ -33,6 +33,17 @@ def make_prediction():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+@app.route('/weather', methods=['GET'])
+def postWeatherData():
+    data = {
+            "temperature": 25,
+            "wet_bulb_temp": 30,
+            "humidity": 50,
+        }
+
+    return jsonify(data), 200
+  
 
 if __name__ == '__main__':
     app.run(debug=True)

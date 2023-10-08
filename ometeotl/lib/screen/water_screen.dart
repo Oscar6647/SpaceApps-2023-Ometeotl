@@ -1,7 +1,15 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:ometeotl/constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ometeotl/fetch.dart';
+import 'package:ometeotl/screen/data_selection_screen.dart';
+import 'package:ometeotl/screen/explain_screen.dart';
 import 'package:ometeotl/screen/forms_screen.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 
 class WaterPage extends StatefulWidget {
   const WaterPage({Key? key}) : super(key: key);
@@ -19,7 +27,30 @@ class _WaterPageState extends State<WaterPage> {
     // Add more images as needed
   ];
 
-  List<Widget> _buildCards() {
+
+  List<Widget> _buildCards()  {
+    int temp = 0;
+    int humidity = 0;
+    int wetBulbTemp;
+
+    const url = 'http://127.0.0.1:5000/weather';
+        fetchData(String url) async {
+          final response = await http.get(
+              Uri.parse(url),
+              headers: <String, String>{
+                'Content-Type': 'application/json; charset=UTF-8',
+              },
+
+              );
+              Map<String, dynamic> info = json.decode(response.body);
+              temp = info['temperature'];
+              humidity = info['humidity'];
+              // wetBulbTemp = info['wetBulbTemp'];
+              print(temp);
+
+        }
+
+        fetchData(url);
     return [
       _buildCard(
         color: widgetColorLight,
@@ -27,7 +58,7 @@ class _WaterPageState extends State<WaterPage> {
         description: 'Current temperature',
         index: 1,
         icon: Icons.thermostat,
-        data: "data",
+        data: temp.toString(),
       ),
       _buildCard(
           color: widgetColorLight,
@@ -49,7 +80,7 @@ class _WaterPageState extends State<WaterPage> {
           description: 'Total water in the atmosphere',
           index: 4, // Update the index if needed
           icon: Icons.water_drop,
-          data: "920"),
+          data: humidity.toString()),
       _buildCard(
           color: widgetColorLight,
           text: "Relative humidity",
@@ -101,8 +132,34 @@ class _WaterPageState extends State<WaterPage> {
       required int index,
       required IconData icon,
       required String data,
-      required String description}) {
+      required String description,
+      
+      }
+      ) {
     return GestureDetector(
+      
+      onTap: () {
+        const url = 'http://127.0.0.1:5000/weather';
+        fetchData(String url) async {
+          final response = await http.get(
+              Uri.parse(url),
+              headers: <String, String>{
+                'Content-Type': 'application/json; charset=UTF-8',
+              },
+
+              );
+              Map<String, dynamic> info = json.decode(response.body);
+              int temp = info['temperature'];
+              int humidity = info['humidity'];
+
+              print(temp);
+
+        }
+
+        fetchData(url);
+        // print(info);
+
+      },
       child: Card(
         color: color,
         shape: RoundedRectangleBorder(
