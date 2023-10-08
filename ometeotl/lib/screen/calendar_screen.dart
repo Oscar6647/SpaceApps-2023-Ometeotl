@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ometeotl/constants.dart';
-import 'package:ometeotl/screen/home.dart';
-import 'package:ometeotl/widgets/background_scaffold.dart';
-import 'package:ometeotl/widgets/logo_image.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:ometeotl/constants.dart';
+import 'package:ometeotl/widgets/background_scaffold.dart';
+import 'package:ometeotl/widgets/logo_image.dart';
 
 class DateSelectionScreen extends StatefulWidget {
   const DateSelectionScreen({Key? key}) : super(key: key);
@@ -16,6 +16,7 @@ class DateSelectionScreen extends StatefulWidget {
 class _DateSelectionScreenState extends State<DateSelectionScreen> {
   DateTime selectedDate = DateTime.now();
   TextEditingController dateController = TextEditingController();
+  String predictionValue = ''; // Store the prediction value here
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -51,10 +52,19 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
 
     if (response.statusCode == 200) {
       // Request was successful, handle the response here
-      print('Response: ${response.body}');
+      final jsonResponse = jsonDecode(response.body);
+      final prediction = jsonResponse['prediction']; // Assuming your API returns a 'prediction' field
+
+      // Set the predictionValue variable to the received prediction
+      setState(() {
+        predictionValue = 'Prediction: $prediction'; // Display the prediction with a label
+      });
     } else {
       // Request failed, handle the error here
       print('Error: ${response.statusCode}');
+      setState(() {
+        predictionValue = 'Failed to retrieve prediction';
+      });
     }
   }
 
@@ -115,6 +125,10 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
                 'Send',
                 style: TextStyle(fontSize: 18.0),
               ),
+            ),
+            Text(
+              predictionValue,
+              style: TextStyle(color: Colors.white),
             ),
           ],
         ),

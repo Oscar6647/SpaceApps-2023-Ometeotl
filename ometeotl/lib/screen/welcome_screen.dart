@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ometeotl/constants.dart';
-import 'package:ometeotl/screen/home.dart';
+import 'package:ometeotl/screen/weather_page.dart';
 import 'package:ometeotl/screen/login_screen.dart';
 import 'package:ometeotl/screen/water_screen.dart';
 import 'package:ometeotl/widgets/background_scaffold.dart';

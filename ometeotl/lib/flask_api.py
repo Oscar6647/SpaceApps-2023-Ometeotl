@@ -13,6 +13,7 @@ data = pd.read_csv('Template_Pred.csv')
 def make_prediction():
     try:
         data = request.get_json()  # Parse incoming JSON data
+        print(data)
 
         # Check if the required fields are present in the JSON data
         if 'year' in data and 'month' in data and 'day' in data:
@@ -23,6 +24,7 @@ def make_prediction():
             # Calculate the DOY (Day of Year) based on the user-provided month and day
             date = datetime(year, month, day)
             doy = date.timetuple().tm_yday
+            print(doy)
 
             # Find the prediction for the specified year and DOY
             prediction = find_prediction(year, doy)

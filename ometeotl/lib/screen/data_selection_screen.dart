@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ometeotl/screen/home.dart';
+import 'package:ometeotl/screen/weather_page.dart';
 import 'package:ometeotl/screen/pollution_screen.dart';
 import 'package:ometeotl/screen/water_screen.dart';
 import 'package:ometeotl/widgets/content_card.dart';
