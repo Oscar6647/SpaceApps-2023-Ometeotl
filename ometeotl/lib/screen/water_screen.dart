@@ -1,4 +1,3 @@
-import 'dart:js_interop';
 
 import 'package:flutter/material.dart';
 import 'package:ometeotl/constants.dart';
@@ -33,7 +32,7 @@ class _WaterPageState extends State<WaterPage> {
     int humidity = 0;
     int wetBulbTemp;
 
-    const url = 'http://127.0.0.1:5000/weather';
+    const url = 'https://spaceapps-ometeotl-2023.uc.r.appspot.com/';
         fetchData(String url) async {
           final response = await http.get(
               Uri.parse(url),
@@ -139,7 +138,7 @@ class _WaterPageState extends State<WaterPage> {
     return GestureDetector(
       
       onTap: () {
-        const url = 'http://127.0.0.1:5000/weather';
+        const url = 'https://spaceapps-ometeotl-2023.uc.r.appspot.com/';
         fetchData(String url) async {
           final response = await http.get(
               Uri.parse(url),

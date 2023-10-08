@@ -66,10 +66,7 @@ class _WeatherPageState extends State<WeatherPage> {
           description: 'Precipitation risk',
           index: 6,
           icon: Icons.storm,
-          data: widget.predictionValue != null
-    ? double.parse(widget.predictionValue).toStringAsFixed(2)
-    : 'N/A', // Replace 'N/A' with a default value if predictionValue is null
- // Replace 'N/A' with a default value if predictionValue is null
+          data: widget.predictionValue
 ),
       _buildCard(
           color: widgetColor,
