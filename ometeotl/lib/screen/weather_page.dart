@@ -4,9 +4,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ometeotl/screen/forms_screen.dart';
 
 class WeatherPage extends StatefulWidget {
-   final String predictionValue; // Add this line
+   final String predictionValue; 
+   final String recommendationValue; 
 
-  const WeatherPage({Key? key, required this.predictionValue}) : super(key: key);
+  const WeatherPage({Key? key, required this.predictionValue, required this.recommendationValue}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -55,7 +56,7 @@ class _WeatherPageState extends State<WeatherPage> {
       _buildCard(
           color: widgetColor,
           text: "Relative humidity",
-          description: 'Humidity according to atmosphere capacity',
+          description: widget.predictionValue,
           index: 5,
           icon: Icons.water_drop_sharp,
           data: "12"),
@@ -298,6 +299,7 @@ class _WeatherPageState extends State<WeatherPage> {
                         color: Colors.white,
                       ),
                     ),
+                    
                   ),
                 ),
               ],

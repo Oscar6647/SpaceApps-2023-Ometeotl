@@ -17,7 +17,9 @@ class DateSelectionScreen extends StatefulWidget {
 class _DateSelectionScreenState extends State<DateSelectionScreen> {
   DateTime selectedDate = DateTime.now();
   TextEditingController dateController = TextEditingController();
-  String predictionValue = ''; // Store the prediction value here
+  String predictionValue = ''; 
+  String recommendationValue = '';
+  // Store the prediction value here
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -54,17 +56,22 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
     if (response.statusCode == 200) {
       // Request was successful, handle the response here
       final jsonResponse = jsonDecode(response.body);
-      final prediction = jsonResponse['prediction']; // Assuming your API returns a 'prediction' field
+      final prediction = jsonResponse['prediction'];
+      final recommendation = jsonResponse['recommendation'];
+       // Assuming your API returns a 'prediction' field
 
       // Set the predictionValue variable to the received prediction
       setState(() {
-        predictionValue = '$prediction'; // Display the prediction with a label
+        predictionValue = '$prediction';
+        recommendationValue = '$recommendation';
+         // Display the prediction with a label
       });
     } else {
       // Request failed, handle the error here
       print('Error: ${response.statusCode}');
       setState(() {
         predictionValue = 'Failed to retrieve prediction';
+        recommendationValue = 'Failed to retrieve recommendation';
       });
     }
   }
@@ -130,7 +137,7 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => WeatherPage(predictionValue: predictionValue), // Pass the predictionValue
+                      builder: (context) => WeatherPage(predictionValue: predictionValue, recommendationValue: recommendationValue,), // Pass the predictionValue
                     ),
                   );
                 },
