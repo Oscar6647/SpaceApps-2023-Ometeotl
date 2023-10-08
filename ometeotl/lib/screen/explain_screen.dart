@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ometeotl/screen/calendar_screen.dart';
-import 'package:ometeotl/screen/data_selection_screen.dart';
 
 
 class ExplainScreen extends StatefulWidget {
@@ -149,10 +148,9 @@ class PageScreen extends StatelessWidget {
                         Curve curve = Curves.ease;
                         goNextPage
                             ? Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                 
-                                    builder: (context) => const DateSelectionScreen()))
+                  context,
+                  MaterialPageRoute(builder: (_) => DateSelectionScreen()),
+                )
                             : {
                                 pageController.animateToPage(nextPage,
                                     duration: const Duration(milliseconds: 500),

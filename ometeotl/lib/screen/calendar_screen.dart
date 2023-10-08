@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ometeotl/constants.dart';
-import 'package:ometeotl/screen/data_selection_screen.dart';
+import 'package:ometeotl/screen/home.dart';
 import 'package:ometeotl/widgets/background_scaffold.dart';
 import 'package:ometeotl/widgets/logo_image.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class DateSelectionScreen extends StatefulWidget {
   const DateSelectionScreen({Key? key}) : super(key: key);
@@ -30,6 +32,32 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
     }
   }
 
+  Future<void> sendSelectedDate(DateTime selectedDate) async {
+    final apiUrl = 'http://127.0.0.1:5000/'; // Replace with your Flask API URL
+
+    final selectedDateJson = {
+      'year': selectedDate.year,
+      'month': selectedDate.month,
+      'day': selectedDate.day,
+    };
+
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(selectedDateJson),
+    );
+
+    if (response.statusCode == 200) {
+      // Request was successful, handle the response here
+      print('Response: ${response.body}');
+    } else {
+      // Request failed, handle the error here
+      print('Error: ${response.statusCode}');
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -53,53 +81,38 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
                     controller: dateController,
                     readOnly: true,
                     onTap: () => _selectDate(context),
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       labelText: 'Select Date',
                       hintText: 'Tap to select a date',
                       suffixIcon: Icon(Icons.calendar_today, color: Colors.white),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white), 
+                        borderSide: BorderSide(color: Colors.white),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white), 
+                        borderSide: BorderSide(color: Colors.white),
                       ),
-                      labelStyle: TextStyle(color: Colors.white), 
-                      hintStyle: TextStyle(color: Colors.grey), 
+                      labelStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.grey),
                     ),
-                    style: const TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ],
             ),
-                        ElevatedButton(
-              onPressed: () {
-                // Convert the selected date to JSON format
-                final selectedDateJson = {
-                  'year': selectedDate.year,
-                  'month': selectedDate.month,
-                  'day': selectedDate.day,
-                };
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DataSelection()),
-                );
-
-                // Now you can send `selectedDateJson` to your Flask API
-                print(selectedDateJson);
-
-                
-                // For example, you can call `fetchPrediction(selectedDateJson)` here
+            ElevatedButton(
+              onPressed: () async {
+                await sendSelectedDate(selectedDate);
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0), 
+                  borderRadius: BorderRadius.circular(20.0),
                 ),
                 primary: paleteLightBlue,
-                padding: EdgeInsets.all(20.0), 
+                padding: EdgeInsets.all(20.0),
               ),
               child: const Text(
                 'Send',
-                style: TextStyle(fontSize: 18.0), 
+                style: TextStyle(fontSize: 18.0),
               ),
             ),
           ],
