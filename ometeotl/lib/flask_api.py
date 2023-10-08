@@ -1,13 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import pickle
+from datetime import datetime, timedelta
+import pandas as pd
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for your Flask app
 
-# Load your machine learning model from the .pkl file
-with open('watermodel_pkl', 'rb') as model_file:
-    loaded_model = pickle.load(model_file)
+# Load your CSV data into a DataFrame
+data = pd.read_csv('Template_Pred.csv')
 
 @app.route('/', methods=['POST'])
 def make_prediction():
@@ -15,16 +15,22 @@ def make_prediction():
         data = request.get_json()  # Parse incoming JSON data
 
         # Check if the required fields are present in the JSON data
-        if 'features' in data:
-            features = data['features']
+        if 'year' in data and 'month' in data and 'day' in data:
+            year = data['year']
+            month = data['month']
+            day = data['day']
 
-            # Perform predictions or other operations using the loaded object
-            result = loaded_model.predict([features])
+            # Calculate the DOY (Day of Year) based on the user-provided month and day
+            date = datetime(year, month, day)
+            doy = date.timetuple().tm_yday
+
+            # Find the prediction for the specified year and DOY
+            prediction = find_prediction(year, doy)
 
             # Format the results
             result = {
                 'message': 'Prediction successful',
-                'prediction': result.tolist()  # Convert predictions to a list
+                'prediction': prediction
             }
 
             return jsonify(result), 200
@@ -33,17 +39,14 @@ def make_prediction():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
-@app.route('/weather', methods=['GET'])
-def postWeatherData():
-    data = {
-            "temperature": 25,
-            "wet_bulb_temp": 30,
-            "humidity": 50,
-        }
 
-    return jsonify(data), 200
-  
+def find_prediction(year, doy):
+    # Find the prediction in your CSV data based on the year and DOY
+    try:
+        prediction = data.loc[(data['YEAR'] == year) & (data['DOY'] == doy), 'Pred Temp'].values[0]
+        return prediction
+    except IndexError:
+        return 'Prediction not found for the specified year and day'
 
 if __name__ == '__main__':
     app.run(debug=True)

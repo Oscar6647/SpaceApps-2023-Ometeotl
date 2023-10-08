@@ -23,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
                   top: 40.0, bottom: 40.0, left: 50.0, right: 50.0),
               child: GestureDetector(
                 onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const WaterPage())),
+                    MaterialPageRoute(builder: (_) => const SignUpScreen())),
                 child: Container(
                   height: MediaQuery.of(context).size.width / 8,
                   decoration: const BoxDecoration(
