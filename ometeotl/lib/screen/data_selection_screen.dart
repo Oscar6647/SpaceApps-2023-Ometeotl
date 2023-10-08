@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ometeotl/screen/home.dart';
 import 'package:ometeotl/screen/pollution_screen.dart';
+import 'package:ometeotl/screen/water_screen.dart';
 import 'package:ometeotl/widgets/card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            HomePage(), // Replace RainForecastScreen with the desired screen
+                            const HomePage(), // Replace RainForecastScreen with the desired screen
                       ),
                     );
                   },
@@ -65,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            PollutionPage(), 
+                            const PollutionPage(), 
                       ),
                     );
                   },
@@ -81,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            const HomePage(), 
+                            const WaterPage(), 
                       ),
                     );
                   },

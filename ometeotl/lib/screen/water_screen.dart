@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:ometeotl/constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class WaterPage extends StatefulWidget {
+  const WaterPage({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _HomePageState createState() => _HomePageState();
+  _WaterPageState createState() => _WaterPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _WaterPageState extends State<WaterPage> {
   List<Widget> carouselItems = [
     Image.asset('assets/satelite.jpg'),
     Image.asset('assets/satelite2.jpg'),
@@ -207,7 +207,7 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.settings),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const HomePage()));
+                    MaterialPageRoute(builder: (context) => const WaterPage()));
               },
             ),
           ],
