@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ometeotl/constants.dart';
+import 'package:ometeotl/screen/home.dart';
 import 'package:ometeotl/screen/login_screen.dart';
+import 'package:ometeotl/screen/water_screen.dart';
 import 'package:ometeotl/widgets/background_scaffold.dart';
 import 'package:ometeotl/widgets/logo_image.dart';
 
@@ -21,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
                   top: 40.0, bottom: 40.0, left: 50.0, right: 50.0),
               child: GestureDetector(
                 onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const SignUpScreen())),
+                    MaterialPageRoute(builder: (_) => const WaterPage())),
                 child: Container(
                   height: MediaQuery.of(context).size.width / 8,
                   decoration: const BoxDecoration(
