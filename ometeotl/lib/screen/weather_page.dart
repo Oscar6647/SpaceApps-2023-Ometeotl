@@ -56,7 +56,7 @@ class _WeatherPageState extends State<WeatherPage> {
       _buildCard(
           color: widgetColor,
           text: "Relative humidity",
-          description: widget.predictionValue,
+          description: widget.recommendationValue,
           index: 5,
           icon: Icons.water_drop_sharp,
           data: "12"),
