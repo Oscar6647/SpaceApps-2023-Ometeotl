@@ -3,11 +3,17 @@ import 'package:ometeotl/constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ometeotl/screen/forms_screen.dart';
 
-class WeatherPage extends StatefulWidget {
-   final String predictionValue; 
+class WeatherPage extends StatefulWidget { 
    final String recommendationValue; 
+   //final String temperatureValue;
+  //final String humidityValue;
+    //final String precipitationValue;
+    final String predictionValue;
+  
 
-  const WeatherPage({Key? key, required this.predictionValue, required this.recommendationValue}) : super(key: key);
+
+
+  const WeatherPage({Key? key, required this.recommendationValue, required this.predictionValue}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -66,7 +72,7 @@ class _WeatherPageState extends State<WeatherPage> {
         description: 'Current temperature',
         index: 1,
         icon: Icons.thermostat,
-        data: "data",
+        data: "widget.temperatureValue",
       ),
       _buildCard(
           color: widgetColor,
@@ -88,11 +94,11 @@ class _WeatherPageState extends State<WeatherPage> {
           description: 'Total water in the atmosphere',
           index: 4, // Update the index if needed
           icon: Icons.water_drop,
-          data: "920"),
+          data: "widget.humidityValue"),
       _buildCard(
           color: widgetColor,
           text: "Relative humidity",
-          description: widget.predictionValue,
+          description: "45",
           index: 5,
           icon: Icons.water_drop_sharp,
           data: "12"),

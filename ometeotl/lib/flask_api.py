@@ -1,3 +1,6 @@
+
+
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from datetime import datetime
@@ -56,7 +59,7 @@ def make_prediction():
 
 def get_recommendation(prediction_value):
     # Make an API call to ReverseGPT to get a recommendation based on the prediction value
-    api_key = "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"  # Replace with your ReverseGPT API key
+    api_key = "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"  # Replace with your ReverseGPT API key
 
     chatbot = Chatbot(api_key)
 

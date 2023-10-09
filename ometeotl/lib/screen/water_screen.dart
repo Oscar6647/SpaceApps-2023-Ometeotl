@@ -138,7 +138,7 @@ class _WaterPageState extends State<WaterPage> {
     return GestureDetector(
       
       onTap: () {
-        const url = 'https://spaceapps-ometeotl-2023.uc.r.appspot.com/';
+        const url = 'http://127.0.0.1:5000/weather';
         fetchData(String url) async {
           final response = await http.get(
               Uri.parse(url),
