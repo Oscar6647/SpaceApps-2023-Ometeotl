@@ -56,7 +56,7 @@ def make_prediction():
 
 def get_recommendation(prediction_value):
     # Make an API call to ReverseGPT to get a recommendation based on the prediction value
-    api_key = "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"  # Replace with your ReverseGPT API key
+    api_key = "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"  # Replace with your ReverseGPT API key
 
     chatbot = Chatbot(api_key)
 

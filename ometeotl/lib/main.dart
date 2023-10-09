@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ometeotl',
       theme: ThemeData(),
-      home: WelcomeScreen(),
+      home: DateSelectionScreen(),
     );
   }
 }

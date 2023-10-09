@@ -17,7 +17,10 @@ class DateSelectionScreen extends StatefulWidget {
 class _DateSelectionScreenState extends State<DateSelectionScreen> {
   DateTime selectedDate = DateTime.now();
   TextEditingController dateController = TextEditingController();
-  String predictionValue = ''; 
+  /*String temperatureValue = ''; 
+  String humidityValue = '';
+  String precipitationValue = '';*/
+  String predictionValue = '';
   String recommendationValue = '';
   // Store the prediction value here
 
@@ -37,7 +40,8 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
   }
 
   Future<void> sendSelectedDate(DateTime selectedDate) async {
-    final apiUrl = 'https://spaceapps-ometeotl-2023.uc.r.appspot.com/'; // Replace with your Flask API URL
+    //https://spaceapps-ometeotl-2023.uc.r.appspot.com/
+    const apiUrl = 'http://127.0.0.1:5000/'; // Replace with your Flask API URL
 
     final selectedDateJson = {
       'year': selectedDate.year,
@@ -56,12 +60,18 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
     if (response.statusCode == 200) {
       // Request was successful, handle the response here
       final jsonResponse = jsonDecode(response.body);
+      /*final temperature = jsonResponse['temp'];
+      final humidity = jsonResponse['hum'];
+      final precipitation = jsonResponse['preci'];*/
       final prediction = jsonResponse['prediction'];
       final recommendation = jsonResponse['recommendation'];
        // Assuming your API returns a 'prediction' field
 
       // Set the predictionValue variable to the received prediction
       setState(() {
+        //temperatureValue = '$temperature';
+        //humidityValue = '$humidity';
+        //precipitationValue = '$precipitation';
         predictionValue = '$prediction';
         recommendationValue = '$recommendation';
          // Display the prediction with a label
@@ -70,6 +80,9 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
       // Request failed, handle the error here
       print('Error: ${response.statusCode}');
       setState(() {
+        /*temperatureValue = 'Failed to retrieve prediction';
+        humidityValue = 'Failed to retrieve prediction';
+        precipitationValue = 'Failed to retrieve prediction';*/
         predictionValue = 'Failed to retrieve prediction';
         recommendationValue = 'Failed to retrieve recommendation';
       });
@@ -137,7 +150,7 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => WeatherPage(predictionValue: predictionValue, recommendationValue: recommendationValue,), // Pass the predictionValue
+                      builder: (context) => WeatherPage(recommendationValue: recommendationValue, predictionValue: predictionValue,), // Pass the predictionValue
                     ),
                   );
                 },
