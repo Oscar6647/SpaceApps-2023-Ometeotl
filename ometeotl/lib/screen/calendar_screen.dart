@@ -40,8 +40,7 @@ class _DateSelectionScreenState extends State<DateSelectionScreen> {
   }
 
   Future<void> sendSelectedDate(DateTime selectedDate) async {
-    //https://spaceapps-ometeotl-2023.uc.r.appspot.com/
-    const apiUrl = 'http://127.0.0.1:5000/'; // Replace with your Flask API URL
+    final apiUrl = 'https://spaceapps-ometeotl-2023.uc.r.appspot.com/'; // Replace with your Flask API URL
 
     final selectedDateJson = {
       'year': selectedDate.year,

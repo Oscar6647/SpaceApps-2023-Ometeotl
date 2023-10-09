@@ -62,7 +62,7 @@ class _WeatherPageState extends State<WeatherPage> {
       _buildCard(
           color: widgetColor,
           text: "Relative humidity",
-          description: widget.recommendationValue,
+          description: widget.predictionValue,
           index: 5,
           icon: Icons.water_drop_sharp,
           data: "12"),
@@ -286,24 +286,27 @@ class _WeatherPageState extends State<WeatherPage> {
                 ),
                 const SizedBox(height: 30),
                 SizedBox(
-                  height: 40,
                   width: MediaQuery.of(context).size.width,
-                  child: const Card(
+                  child: SingleChildScrollView(
+
+                  child:  Card(
                     color: widgetColor,
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     child: Text(
-                      'Recommendations',
+                      widget.recommendationValue,
+
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.normal,
                         color: Colors.white,
                       ),
                     ),
                     
                   ),
+                  )
                 ),
               ],
             ),
