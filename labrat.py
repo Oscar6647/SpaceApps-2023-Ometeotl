@@ -1,7 +1,11 @@
 
 import requests
 import pickle
-url = 'https://api.openweathermap.org/data/2.5/air_pollution?lat=19.44506&lon=-99.14612&appid=e86f4f960c4b6ce057724044b6a5cea8'
+
+lat=input() #this variables the user in the app will set
+lon=input() #this variables the user in the app will set
+
+url = f'https://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid=e86f4f960c4b6ce057724044b6a5cea8'
 
 response = requests.get(url)
 
@@ -18,7 +22,7 @@ if response.status_code == 200:
     with open('SpaceApps\ModeloCont.pk1', 'rb') as model_file:
         loaded_model = pickle.load(model_file)
     result = loaded_model.predict([[co_rn,no_rn,no2_rn,o3_rn,pm10_rn,pm2_5_rn,so2_rn]])
-    print(result)
+    print(result) #this should be displayed in the app!!!
 
 else:
     print(f"Request failes {response.status_code}")
