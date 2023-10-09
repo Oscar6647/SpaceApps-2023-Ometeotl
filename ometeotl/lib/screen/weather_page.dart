@@ -22,12 +22,48 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   List<Widget> carouselItems = [
-    Image.asset('/cuau1.png'),
+    Image.asset('/Mapas/alvaroobregon_flooding_museocasaestudiodiegoriverayfridakahlo.png'),
     Image.asset('/cuau2.png'),
     Image.asset('/cuau3.png'),
     // Add more images as needed
   ];
 
+  List<String> cities = ['Diego Rivera', 'Arena CDMX', 'Pepsi center', 'Estadio Azteca', 'Desierto de los Leones', 'Torre mayor', 'Basilica de guadalupe', 'Parque Cerro de la Estrella', 'Museo Nacional de antropología',
+  'Parque Nacional El Tepozteco', 'Centro cultural Faro de  Tlahuac', 'Six Flags', 'Aeropuerto CDMX'
+  ];
+  List<String> images = [
+    '/Mapas/alvaroobregon_flooding_museocasaestudiodiegoriverayfridakahlo.png',
+    '/Mapas/alvaroobregon_hail_museocasaestudiodiegoriverayfridakahlo.png',
+    '/Mapas/alvaroobregon_precipitacion_museocasaestudiodiegoriverayfridakahlo.png',
+  ];
+
+  void changeImages(String loc) {
+    String image1 = '/cuau1.png';
+    String image2 = '/cuau2.png';
+    String image3 = '/cuau3.png';
+
+    switch(loc) {
+      case 'Museo Diego Rivera, ':
+        image1 = '/Mapas/alvaroobregon_flooding_museocasaestudiodiegoriverayfridakahlo.png';
+        image2 = '/Mapas/alvaroobregon_hail_museocasaestudiodiegoriverayfridakahlo.png';
+        image3 = '/Mapas/alvaroobregon_precipitacion_museocasaestudiodiegoriverayfridakahlo.png';
+      break;
+    }
+  // Create a new list of images with the desired changes
+  List<Widget> newCarouselItems = [
+    Image.asset(image1),
+    Image.asset(image2),
+    Image.asset(image3),
+    // Add more new images as needed
+  ];
+
+  // Update the carouselItems list with the new images
+  setState(() {
+    carouselItems = newCarouselItems;
+  });
+}
+
+  
   List<Widget> _buildCards() {
     return [
       _buildCard(
@@ -191,6 +227,8 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
+    
+
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -285,6 +323,7 @@ class _WeatherPageState extends State<WeatherPage> {
                   },
                 ),
                 const SizedBox(height: 30),
+                const Text("Choose another location"),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: SingleChildScrollView(
@@ -308,6 +347,46 @@ class _WeatherPageState extends State<WeatherPage> {
                   ),
                   )
                 ),
+
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 300,
+                child: Expanded(
+                  child: ListView.builder(
+                    itemCount: cities.length,
+                    itemBuilder: (context, index) {
+                      final cityName = cities[index];
+                      return GestureDetector(
+                        onTap: () {
+                          // Handle list item click here
+                          changeImages(cityName);
+                        },
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                            decoration: BoxDecoration(
+                              color: widgetColor, // Background color
+                              borderRadius:
+                                  BorderRadius.circular(16), // Rounded borders
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: ListTile(
+                              leading: const Icon(Icons.location_city), // Electricity ray icon
+                              title: Text(cityName),
+                              trailing: const Icon(Icons.arrow_forward_ios),
+                            ),
+                          ),
+                      );
+                      }
+                      )
+                    ),
+              )
               ],
             ),
           ),
