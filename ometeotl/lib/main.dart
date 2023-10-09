@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ometeotl/screen/calendar_screen.dart';
+import 'package:ometeotl/screen/latitude.dart';
 import 'package:ometeotl/screen/welcome_screen.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ometeotl',
       theme: ThemeData(),
-      home: DateSelectionScreen(),
+      home: WelcomeScreen(),
     );
   }
 }
