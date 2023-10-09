@@ -1,16 +1,17 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from datetime import datetime
 import pandas as pd
 from revChatGPT.V3 import Chatbot
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for your Flask app
-
+app.config['CORS_HEADERS'] = 'Content-Type'
 # Load your CSV data into a DataFrame
 data = pd.read_csv('Precip_Hist_Pred.csv')
 
 @app.route('/', methods=['POST'])
+@cross_origin()
 def make_prediction():
     try:
         data = request.get_json()  # Parse incoming JSON data
