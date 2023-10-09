@@ -19,7 +19,7 @@ if response.status_code == 200:
     pm2_5_rn = data['list'][0]['components']['pm2_5']
     pm10_rn = data['list'][0]['components']['pm10']
     so2_rn = data['list'][0]['components']['so2']
-    with open('SpaceApps\ModeloCont.pk1', 'rb') as model_file:
+    with open('SpaceApps\ModeloCont.pk1', 'rb') as model_file: #change the 'SpaceApps\ModeloCont.pkl' to the location of this file in your computer!!!
         loaded_model = pickle.load(model_file)
     result = loaded_model.predict([[co_rn,no_rn,no2_rn,o3_rn,pm10_rn,pm2_5_rn,so2_rn]])
     print(result) #this should be displayed in the app!!!
